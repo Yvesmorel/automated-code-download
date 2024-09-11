@@ -36,6 +36,7 @@ async function generateWordFromHtml(outerHTML) {
             let paragraph;
             if (el.tag === 'h6') {
                 paragraph = new Paragraph({
+                    heading: HeadingLevel.HEADING_1,
                     border: index === 0 ? {
                         top: { style: BorderStyle.SINGLE, size: 2, space: 1 },
                         bottom: { style: BorderStyle.SINGLE, size: 2, space: 1 },
@@ -43,13 +44,14 @@ async function generateWordFromHtml(outerHTML) {
                         right: { style: BorderStyle.SINGLE, size: 2, space: 1 },
                     } : undefined,
                     alignment: AlignmentType.CENTER,
-                    heading: HeadingLevel.TITLE,
+                    
                     children: [
                         new TextRun({
                             text: el.text,
                             bold: true,
                             font: "Calibri",
                             size: index === 0 ? 40 : 32,
+
                         })
                     ],
                 });
